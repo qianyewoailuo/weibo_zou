@@ -38,4 +38,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * gravatar https://en.gravatar.com/
+     *
+     * @var string
+     */
+
+    public function gravatar($size = '100')
+    {
+        $hash = md5(strtolower($this->attributes['email']));
+
+        return "http://www.gravatar.com/avatar/$hash?s=$size";
+    }
 }
